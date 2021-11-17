@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const BotonRuta = ({tipo}) => {
     return (
         <>
-            <NavLink exact to={`/animales/${tipo}`}>{tipo}</NavLink>
+            <NavLink className="navbar-item" exact to={`/animales/${tipo}`}>{tipo}</NavLink>
         </>
     );
 };

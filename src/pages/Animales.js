@@ -14,12 +14,15 @@ const Animales = () => {
         fetch("http://localhost:5500/mascotas/")
         .then(res=>res.ok?res.json():Promise.reject(res.status + ": " + res.statusText))
         .then(lista=>{
-            setLista(lista.filter(tipo => tipo.tipo !== tipo));
+            console.log(lista);
+            setLista(mascotas => {
+                return mascotas.filter(mascota => mascota.tipo === tipo);
+            });
             console.log(lista);
         })
         .catch(err=>console.error(err))
         .finally(() => setIsLoading(false));
-    }, []);
+    }, [tipo]);
 
     return (
         <>
@@ -28,11 +31,11 @@ const Animales = () => {
                 {
                     isLoading?<Spinner/>:
                     <>
+                        <h2 className="title is-4">Mascotas que son {tipo}</h2>
                         {
                             lista.map(mascota => {
                                 return (
-                                    <>
-                                        <h2 className="title is-4">Mascotas que son {tipo}</h2>
+                                    <div key={mascota.id}>
                                         <div className="card">
                                             <div className="card-content">
                                                 <div className="content">
@@ -44,11 +47,10 @@ const Animales = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </>
+                                    </div>
                                 ); 
                             })
                         }
-                        
                         <br/>
                         <Link to="/">Volver</Link>
                     </>
