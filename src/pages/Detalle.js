@@ -15,7 +15,6 @@ const Detalle = () => {
         fetch("http://localhost:5500/mascotas/"+id)
         .then(res=>res.ok?res.json():Promise.reject(res.status + ": " + res.statusText))
         .then(mascota=>{
-            console.log(mascota);
             setPet(mascota);
         })
         .catch(err=>console.error(err))
