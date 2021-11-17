@@ -26,6 +26,7 @@ const Animales = () => {
             <nav className="navbar">
                 <Link to="/" className="navbar-item">Volver</Link>
             </nav>
+            <h2 className="title is-3" style={{textAlign: "center"}}>Mascotas que son {tipo}</h2>
             <div className="animalesCentrado">
                 {
                     isLoading?<Spinner/>:
@@ -33,7 +34,6 @@ const Animales = () => {
                         {
                             lista.length?
                             <>
-                            <h2 className="title is-4">Mascotas que son {tipo}</h2>
                             {
                                 lista.map(mascota => {
                                     return (
@@ -53,7 +53,7 @@ const Animales = () => {
                                     ); 
                                 })
                             }
-                            </>:<h2 className="title is-4">No hay mascotas que son {tipo}</h2>
+                            </>:<h2 className="title is-4">No se encontraron resultados...</h2>
                         }
                     </>
                 }

@@ -60,8 +60,14 @@ label{
 
 .animalesCentrado{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: auto;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+p{
+  word-wrap: break-word;
 }
