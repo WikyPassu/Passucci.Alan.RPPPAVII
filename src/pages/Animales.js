@@ -53,7 +53,7 @@ const Animales = () => {
                                     ); 
                                 })
                             }
-                            </>:<h2 className="title is-4">No se encontraron resultados...</h2>
+                            </>:<h2 className="title is-5">No se encontraron resultados...</h2>
                         }
                     </>
                 }

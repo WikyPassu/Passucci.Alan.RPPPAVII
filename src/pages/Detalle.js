@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import Header from '../components/Header';
@@ -9,6 +9,7 @@ const Detalle = () => {
     const [pet, setPet] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const {nombre, edad, tipo, vacunado, observaciones} = pet;
+    const history = useHistory();
 
     useEffect(() => {
         setIsLoading(true);
@@ -17,9 +18,12 @@ const Detalle = () => {
         .then(mascota=>{
             setPet(mascota);
         })
-        .catch(err=>console.error(err))
+        .catch(err=>{
+            console.error(err);
+            history.push("/404");
+        })
         .finally(() => setIsLoading(false));
-    }, [id]);
+    }, [id, history]);
 
     return (
         <>

@@ -53,14 +53,6 @@
       "tipo": "Perro",
       "vacunado": true,
       "observaciones": "Mea por todos lados"
-    },
-    {
-      "id": 5,
-      "nombre": "Sheila",
-      "edad": 13,
-      "tipo": "Perro",
-      "vacunado": true,
-      "observaciones": ""
     }
   ]
 }
