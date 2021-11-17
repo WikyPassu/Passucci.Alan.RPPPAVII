@@ -3,7 +3,7 @@ import BotonRuta from './BotonRuta';
 
 const Navegacion = () => {
     return (
-        <div>
+        <div className="navBar">
             <nav className="navbar">
                 <BotonRuta tipo="Perro"/>
                 <BotonRuta tipo="Gato"/>

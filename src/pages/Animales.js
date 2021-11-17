@@ -14,11 +14,7 @@ const Animales = () => {
         fetch("http://localhost:5500/mascotas/")
         .then(res=>res.ok?res.json():Promise.reject(res.status + ": " + res.statusText))
         .then(lista=>{
-            console.log(lista);
-            setLista(mascotas => {
-                return mascotas.filter(mascota => mascota.tipo === tipo);
-            });
-            console.log(lista);
+            setLista(lista.filter(mascota => mascota.tipo === tipo));
         })
         .catch(err=>console.error(err))
         .finally(() => setIsLoading(false));
@@ -27,32 +23,38 @@ const Animales = () => {
     return (
         <>
             <Header titulo="CRUD Mascotas"/>
-            <div className="centrado">
+            <nav className="navbar">
+                <Link to="/" className="navbar-item">Volver</Link>
+            </nav>
+            <div className="animalesCentrado">
                 {
                     isLoading?<Spinner/>:
                     <>
-                        <h2 className="title is-4">Mascotas que son {tipo}</h2>
                         {
-                            lista.map(mascota => {
-                                return (
-                                    <div key={mascota.id}>
-                                        <div className="card">
-                                            <div className="card-content">
-                                                <div className="content">
-                                                <p><b>Nombre:</b> {mascota.nombre}</p>
-                                                <p><b>Edad:</b> {mascota.edad} años</p>
-                                                <p><b>Tipo:</b> {mascota.tipo}</p>
-                                                <p><b>Vacunado:</b> {mascota.vacunado?"Si":"No"}</p>
-                                                <p><b>Observaciones:</b> {mascota.observaciones?mascota.observaciones:"No hay observaciones"}</p>
+                            lista.length?
+                            <>
+                            <h2 className="title is-4">Mascotas que son {tipo}</h2>
+                            {
+                                lista.map(mascota => {
+                                    return (
+                                        <div key={mascota.id}>
+                                            <div className="card" style={{width: "350px"}}>
+                                                <div className="card-content">
+                                                    <div className="content">
+                                                    <p><b>Nombre:</b> {mascota.nombre}</p>
+                                                    <p><b>Edad:</b> {mascota.edad} años</p>
+                                                    <p><b>Tipo:</b> {mascota.tipo}</p>
+                                                    <p><b>Vacunado:</b> {mascota.vacunado?"Si":"No"}</p>
+                                                    <p><b>Observaciones:</b> {mascota.observaciones?mascota.observaciones:"No hay observaciones"}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ); 
-                            })
+                                    ); 
+                                })
+                            }
+                            </>:<h2 className="title is-4">No hay mascotas que son {tipo}</h2>
                         }
-                        <br/>
-                        <Link to="/">Volver</Link>
                     </>
                 }
             </div>

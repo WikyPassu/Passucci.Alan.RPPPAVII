@@ -25,6 +25,9 @@ const Detalle = () => {
     return (
         <>
             <Header titulo="CRUD Mascotas"/>
+            <nav className="navbar">
+                <Link to="/" className="navbar-item">Volver</Link>
+            </nav>
             <div className="centrado">
                 {
                     isLoading?<Spinner/>:
@@ -41,8 +44,6 @@ const Detalle = () => {
                                 </div>
                             </div>
                         </div>
-                        <br/>
-                        <Link to="/">Volver</Link>
                     </>
                 }
             </div>
